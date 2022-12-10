@@ -1,12 +1,69 @@
 
-/* 
+.login{
+    font-size: 15pt;
+    align-items: center;
+}
+#image{
+    width:100%;
+}
+#email{
+    margin-left: 37px;
+    font-size: 14pt;
+}
+#password{
+    font-size: 14pt;
 
-    You can write your own styles here...
+}
+#search-movie-input{
+    width: 400px;
+}
+.drop{
+    margin-left: 95%;
+    /* width: 00px; */
     
+}
+#collapseExample{
+    width:400px;
+    margin-left: 70%;
     
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+}
+.footer{
+    /* margin-top: 1rem; */
+    /* padding: 1rem; */
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  .video{
+    margin-top: 50px;
+    height: 95%;
+}
+.text-center fw-bold fs-2 mt-3{
+    position: fixed;
+}
+.searchPage{
+    width: 85%;
+    margin: 0 auto
+}
+.d-flex {
+    margin: 0 auto
+}
+.ms-2{
+    margin-left: 500px;
+}
+.line {
+    border: 0;
+    background-color: rgb(119, 118, 118);
+    height: 1px;
+    cursor: pointer;
+    width: 100%;
+  }
+  #searchbar{
+    margin-top: 100px;
+  }
+/* * {
+	border: 1px dashed red;
+	min-height: 10px;
+} */

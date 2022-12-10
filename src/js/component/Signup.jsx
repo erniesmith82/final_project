@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { db } from '../firebase-config.js';
-import { doc, setDoc } from 'firebase/firestore'
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext.jsx';
+import Background from "./Background.jsx"
 
 const Signup = () => {
 
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const {createUser} = UserAuth();
+    const {createUser, user, logout} = UserAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -18,10 +18,11 @@ const Signup = () => {
         setError('');
 
         try {
-            await createUser(email, password);
-            // const {user} = UserAuth();
-            // console.log(user);
+            if (username === '') throw new Error('Username must be longer than one character');
+            if (!RegExp(/^[A-Za-z0-9]*$/).test(username)) throw new Error('Username can only contain letters and numbers');
+            await createUser(username, email, password);
             navigate('/account');
+
         } catch (event) {
             setError(event.message);
             console.log(error);
@@ -29,19 +30,54 @@ const Signup = () => {
     }
 
     return (
-        <div className='text-center fw-bold fs-3 mt-3'>
+        <>
+        <nav class="navbar fixed-top navbar-light ">
+        <p className='drop'>
+            <button className="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fa fa-bars"></i> 
+            </button>
+ 
+        </p>
+    <div className="collapse show" id="collapseExample">
+        <div className="card card-body">
+            <div className='text-center fw-bold fs-2 mt-3'>
             Sign Up
-            <p>Already have an account? <Link className='link-primary' to='/'>Sign In</Link></p>
+            </div>
+        
+        <div className='text-center fw-bold fs-5 mt-3'>
             <form onSubmit={handleSubmit}>
+                <label htmlFor="username">Username</label>
+                <input onChange={e => setUsername(e.target.value)} type="text" id="username" placeholder="Enter Username"/>
+                <br/>
                 <label htmlFor="email">Email</label>
                 <input onChange={e => setEmail(e.target.value)} type="email" id="email" placeholder="Enter Email"/>
                 <br />
                 <label htmlFor="password">Password</label>
                 <input onChange={e => setPassword(e.target.value)} type="password" id="password" placeholder="Enter Password"/>
                 <br />
-                <button className="btn btn-primary">Sign Up</button>
+                <br />
+                <button className="btn btn-dark">Sign Up</button>
+                <br/>
+                <br/>
+                <div className="line"></div>
+                <div className='text-center fw-bold fs-6 mt-3'>
+            <p>Already have an account? <Link className='link-primary' to='/'>Sign In</Link></p>
+        </div>
             </form>
         </div>
+ 
+  </div>
+  
+  
+  
+</div>
+</nav>
+<Background/>
+        
+        </>
+        
+       
+        
     );
 };
 
