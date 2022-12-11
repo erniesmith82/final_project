@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext.jsx';
 import { searchMovies } from '../async-functions.js';
 import MovieSearchCard from './MovieSearchCard.jsx';
+import { BackgroundImg } from './BackgroundImg.jsx';
 
 const Account = () => {
 
@@ -60,22 +61,26 @@ const Account = () => {
         
             </nav>
       
-        <div className='searchPage'>
+        <div className='searchPage' >
+        
             <form onSubmit={handleSearch}>
                 <label className='ms-2' htmlFor="search-movie-input" id='searchbar'>Search Movie</label>
                     <div className="d-flex">
+                    
                         <input type="text" onChange={e => setSearchTerm(e.target.value)} className='form-control mx-2' placeholder='Enter movie name' id='search-movie-input' />
                         <button className='btn btn-info me-2'>Search</button>
+                        
                     </div>
             </form>
 
-            <ul className='mt-3 d-flex justify-content-around flex-wrap' >
+            <ul className='mt-3 d-flex justify-content-around flex-wrap' id='list' >
+            
                 {movies ? movies.map(m => <MovieSearchCard key={m.imdbID} imdbID={m.imdbID} title={m.Title} year={m.Year} poster={m.Poster} />): <p className='text-danger fs-1 fw-bold'>Movie not found!</p>}
             </ul>
-
-
+            
             
         </div>
+        <BackgroundImg/>
         
         </>
     );

@@ -30,7 +30,7 @@ const Signin = () => {
         
      
 	<>
-        <nav class="navbar fixed-top navbar-light ">
+        <nav className="navbar fixed-top navbar-light " id='bar'>
         <p className='drop'>
             <button className="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-bars"></i> 
             </button>
@@ -75,7 +75,9 @@ const Signin = () => {
         </div>
         </nav>
         <Background/>   
+        
         </>
+        
         
         
         
