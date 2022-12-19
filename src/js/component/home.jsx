@@ -7,33 +7,29 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 import Login from "./Login.jsx";
 import Footer from "./Footer.jsx";
 
-
-
 //create your first component
 const Home = () => {
-	return (
-		<>
-		<Login/>
-		
-		<div className="none">
-     
-		
-			
-			<AuthContextProvider>
-    			<Routes>
-				
-				<Route path='account' element={
-            	<ProtectedRoute><Account /></ProtectedRoute>			
-        } />
-		</Routes>
-		</AuthContextProvider>
+  return (
+    <>
+      <Login />
 
-			
-		</div>
-		<Footer/>
-		</>
-		
-	);
+      <div className="none">
+        <AuthContextProvider>
+          <Routes>
+            <Route
+              path="account"
+              element={
+                <ProtectedRoute>
+                  <Account />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </AuthContextProvider>
+      </div>
+      <Footer />
+    </>
+  );
 };
 
 export default Home;
